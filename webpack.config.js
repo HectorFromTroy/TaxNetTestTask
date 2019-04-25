@@ -9,7 +9,7 @@ module.exports = {
   entry: ['babel-polyfill', "./src/index.jsx"],   
 
   output: {//bundles will be emmited here
-    path: path.resolve(__dirname, "dist"),//resolve method returns absolute path
+    path: __dirname,//path.resolve(__dirname, "dist"),//resolve method returns absolute path
     filename: "main.js"//main.js is default name
   },
 
