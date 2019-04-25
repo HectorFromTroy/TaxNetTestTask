@@ -16,10 +16,11 @@ export default class App extends Component{
       filmsToRender: [],
       allTags: [],
       selectedTags: new Set(),
-      countOfFilmsToShow: 5,
+      countOfFilmsToShow: 15,
       isThereSomethingToShow: true
     };
-
+    //for setting searcher input to empty string after changing tags
+    this.searcherElement;
     //this is for storing films based on tags
     //for searching, films will be searched in this array
     this.filmsToRenderBasedOnTags;
@@ -35,6 +36,7 @@ export default class App extends Component{
     this.showMore = this.showMore.bind(this);
     this.getFavoriteFilms = this.getFavoriteFilms.bind(this);
     this.updateFilmsToRender = this.updateFilmsToRender.bind(this);
+    this.setRef = this.setRef.bind(this);
   };
 
   setActiveRoute(path){
@@ -104,6 +106,8 @@ export default class App extends Component{
 
   toggleTag(event){
     
+    //hardcode :)))) setting searcher input to empty string
+    this.searcherElement.value = "";
     const tagName = event.target.dataset.tagname;
     this.setState((prevState)=>{
       const selectedTags = prevState.selectedTags;
@@ -164,7 +168,7 @@ export default class App extends Component{
   showMore(){
 
     this.setState(prevState => {
-      return {countOfFilmsToShow: prevState.countOfFilmsToShow + 5}
+      return {countOfFilmsToShow: prevState.countOfFilmsToShow + 15}
     });
 
   };
@@ -181,6 +185,10 @@ export default class App extends Component{
     this.setState({
       filmsToRender: this.state.allFilms
     });
+  };
+
+  setRef(node){
+    this.searcherElement = node;
   };
 
   render(){
@@ -212,6 +220,7 @@ export default class App extends Component{
             toggleFavorite={this.toggleFavorite}
             toggleTag={this.toggleTag}
             updateFilmsToRender={this.updateFilmsToRender}
+            setRef={this.setRef}
           />}
         />
         <Route path="/bookmarks"

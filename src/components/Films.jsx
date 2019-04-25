@@ -19,6 +19,7 @@ export default class Films extends Component{
       <section className="films">
         <Searcher
           searchFilms={this.props.searchFilms}
+          setRef={this.props.setRef}
         />
 
         <div className="tags-container">
