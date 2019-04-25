@@ -16,8 +16,7 @@ export default class App extends Component{
       filmsToRender: [],
       allTags: [],
       selectedTags: new Set(),
-      countOfFilmsToShow: 15,
-      isThereSomethingToShow: true
+      countOfFilmsToShow: 15
     };
     //for setting searcher input to empty string after changing tags
     this.searcherElement;
