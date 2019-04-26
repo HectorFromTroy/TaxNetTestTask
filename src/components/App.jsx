@@ -59,10 +59,10 @@ export default class App extends Component{
   };
 
   searchFilms(event){
-    const searchText = event.target.value;
+    const searchText = event.target.value.toLowerCase();
     this.setState(() => {
       const result = this.filmsToRenderBasedOnTags.filter(film => 
-        film.title.indexOf(searchText) === 0
+        film.title.toLowerCase().indexOf(searchText) === 0
       )
       return{
         filmsToRender: result
